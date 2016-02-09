@@ -1,5 +1,16 @@
 source 'https://rubygems.org'
 
+gem 'bootstrap-sass', '~> 3.3.6'
+gem 'bootstrap_form'
+gem 'tipsy-rails'
+gem 'pry-rails', :group => :development
+gem 'devise'
+
+group :development do
+  gem "better_errors"
+end
+
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
