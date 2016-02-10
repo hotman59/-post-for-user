@@ -22,7 +22,7 @@ class PostsController < ApplicationController
     ### verif si post.user_id est bien celle du currentuser
      ###sinon redirection vers ailleur avec un message d'erreur adapté
      unless @post.user_id == current_user.id
-  redirect_to @post, notice: 'vous  etes un intrus'
+       redirect_to @post , notice: 'vous  etes un intrus'
       end
   end
 
