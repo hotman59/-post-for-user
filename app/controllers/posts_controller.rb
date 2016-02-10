@@ -19,12 +19,19 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
+    ### verif si post.user_id est bien celle du currentuser
+     ###sinon redirection vers ailleur avec un message d'erreur adapté
+     unless @post.user_id == current_user.id
+  redirect_to @post, notice: 'vous  etes un intrus'
+      end
   end
 
   # POST /posts
   # POST /posts.json
   def create
+    #creation un user_id avoir le titre du post
     @post = Post.new(post_params)
+    @post.user_id = current_user.id
 
     respond_to do |format|
       if @post.save
