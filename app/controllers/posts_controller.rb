@@ -61,12 +61,16 @@ class PostsController < ApplicationController
   # DELETE /posts/1
   # DELETE /posts/1.json
   def destroy
-    @post.destroy
-    respond_to do |format|
-      format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
+       if @post.user_id != current_user.id
+           redirect_to @post , notice: 'dont change other post'
+       else
+     @post.destroy
+     respond_to do |format|
+       format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
+       format.json { head :no_content }
+         end
+     end
+   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
